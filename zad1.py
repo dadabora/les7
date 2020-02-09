@@ -1,43 +1,44 @@
-from random import randint
+class Date:
+    def __init__(self, d_m_g):
+        Date.d_m_g = d_m_g
 
-class Matrix:
-    def __init__(self,  lin_lin):
-        self.lin_lin = lin_lin
+    @classmethod
+    def de_me(cls):
+        dmg_n = cls.d_m_g.split('.' or ',' or ' ')
+        print(dmg_n)
+        dmg_n = [int(el) for el in dmg_n]
+        return dmg_n
+
+    @staticmethod
+    def val(cls):
+
+        if len(str(a[2])) == 4:
+            print(a[2], 'Год норм')
+        else:
+            print(a[2], 'Год не соответствует')
+        if 1 <= a[1] <= 12:
+            print(a[1], 'Месяц норм')
+            if a[1] == 2:
+                if 1 <= a[0] <= 29:
+                    print(a[0], 'Число норм')
+                else:
+                    print(a[0], 'Число не соответствует')
+            elif a[1] == 1 or a[1] == 3 or a[1] == 5 or a[1] == 7 or a[1] == 8 or a[1] == 10 or a[1] == 12:
+                if 1 <= a[0] <= 31:
+                    print(a[0], 'Число норм')
+                else:
+                    print(a[0], 'Число не соответствует')
+            elif a[1] == 4 or a[1] == 6 or a[1] == 9 or a[1] == 11:
+                if 1 <= a[0] <= 30:
+                    print(a[0], 'Число норм')
+                else:
+                    print(a[0], 'Число не соответствует')
+        else:
+            print(a[1], 'Месяц не соответствует')
 
 
-    def draw(self):
-        print('Матрица')
-        for a in range(len(self.lin_lin)):
-            lin_ = self.lin_lin[a]
-            for a in lin_:
-                print (a,  end=" ")
-            print('')
-
-    def __add__(self, other):
-        print('Сложение матриц')
-        for a in range(len(self.lin_lin)):
-            lin_1 = self.lin_lin[a]
-            lin_2 = other.lin_lin[a]
-            for a in range(len(lin_1)):
-                print (lin_1[a] + lin_2[a],  end=" ")
-            print('')
-        return Matrix(self.lin_lin + other.lin_lin)
-
-
-
-def mat(z_str, z_stl):
-    lin_lin = []
-    for a in range(z_stl):
-        lin_s = [randint(0, 100) for b in range(z_str)]
-        lin_lin.append(lin_s)
-    return lin_lin
-
-
-z_str = int(input('Количество солбцов - '))
-z_stl = int(input('Количество строк - '))
-
-matrix1 = Matrix(mat(z_str, z_stl))
-matrix1.draw()
-matrix2 = Matrix(mat(z_str, z_stl))
-matrix2.draw()
-sum_mat = (matrix1 + matrix2)
+dey_x = input('Введите датe, в формате дд.мм.гггг-')
+date = Date(dey_x)
+a = (date.de_me())
+print(a[0],'.', a[1],'.', a[2])
+date.val(a)
